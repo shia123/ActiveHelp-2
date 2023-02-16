@@ -20,35 +20,46 @@ Route::get('/', function () {
 });
 
 Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle']);
-
+Route::middleware('auth', 'doctor.auth')->group(function () {
+Route::get('/doctor-home', function () {
+    return view('doctor.home');
+});
+});
+Route::middleware('auth', 'admin.auth')->group(function () {
+Route::get('/admin-home', function () {
+    return view('admin.home');
+});
+});
 Auth::routes();
+Route::middleware('auth', 'patient.auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/group/create', 'GroupController@create_form');
+    Route::post('/appointment', [App\Http\Controllers\HomeController::class, 'appointment'])->name('appointment');
+    Route::post('/cancel-appointment/{id}', [App\Http\Controllers\HomeController::class, 'cancelAppointment'])->name('cancelAppointment');
+    Route::get('/myappointment', [App\Http\Controllers\HomeController::class, 'myappointment'])->name('myappointment');
 
-Route::post('/group/create', 'GroupController@create');
 
-Route::get('/group/join', 'GroupController@join_form');
+    Route::get('/group/create', 'GroupController@create_form');
 
-Route::post('/group/join', 'GroupController@join');
+    Route::post('/group/create', 'GroupController@create');
 
-Route::get('/group/{id}', 'GroupController@show_group');
+    Route::get('/group/join', 'GroupController@join_form');
 
-Route::get('/group/edit/{id}', 'GroupController@edit');
+    Route::post('/group/join', 'GroupController@join');
 
-Route::post('/group/update/{id}', 'GroupController@update');
+    Route::get('/group/{id}', 'GroupController@show_group');
 
-Route::delete('/group/delete/{id}', 'GroupController@delete');
+    Route::get('/group/edit/{id}', 'GroupController@edit');
 
-Route::get('/group/members_list/{id}', 'GroupController@members_list');
+    Route::post('/group/update/{id}', 'GroupController@update');
 
-Route::get('/remove_user/{id}/{user_id}', 'GroupController@remove_user');
+    Route::delete('/group/delete/{id}', 'GroupController@delete');
 
-Route::post('/send_message/{id}', 'MessageController@send_message');
+    Route::get('/group/members_list/{id}', 'GroupController@members_list');
 
-Route::get('/show_messages/{id}', 'MessageController@show_messages');
+    Route::get('/remove_user/{id}/{user_id}', 'GroupController@remove_user');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/send_message/{id}', 'MessageController@send_message');
 
-Route::post('/appointment', [App\Http\Controllers\HomeController::class, 'appointment'])->name('appointment');
-Route::post('/cancel-appointment/{id}', [App\Http\Controllers\HomeController::class, 'cancelAppointment'])->name('cancelAppointment');
-Route::get('/myappointment', [App\Http\Controllers\HomeController::class, 'myappointment'])->name('myappointment');;
+    Route::get('/show_messages/{id}', 'MessageController@show_messages');
+});

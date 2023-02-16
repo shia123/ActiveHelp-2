@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Group;
 use App\Models\Appointment;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    
+     
     }
 
     /**
@@ -29,7 +32,6 @@ class HomeController extends Controller
     {
         //get group where user is present
         $groups = auth()->user()->group_member;
-
         return view('home', compact('groups'));
     }
 

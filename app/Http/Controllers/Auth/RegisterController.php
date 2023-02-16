@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\DoctorMail;
+use App\Mail\PatientMail;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -51,10 +54,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:255', 'unique:users'],
-         
+
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
+            'role' => ['required'],
+
         ]);
     }
 
@@ -66,12 +70,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
+        if ($data['role'] == 2) {
+            Mail::to($data['email'])->send(new DoctorMail($data['email']));
+        } else {
+            Mail::to($data['email'])->send(new PatientMail($data['email']));
+        }
         return User::create([
             'uuid' => $data['uuid'],
             'username' => $data['username'],
             'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
         ]);
     }
 }

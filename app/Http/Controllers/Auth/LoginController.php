@@ -5,19 +5,22 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+|--------------------------------------------------------------------------
+| Login Controller
+|--------------------------------------------------------------------------
+|
+| This controller handles authenticating users for the application and
+| redirecting them to your home screen. The controller uses a trait
+| to conveniently provide its functionality to your applications.
+|
+*/
 
     use AuthenticatesUsers;
 
@@ -36,5 +39,49 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+        $this->validateLogin($request);
+        if ($this->attemptLogin($request)) {
+            if ($request->hasSession()) {
+                $request->session()->put('auth.password_confirmed_at', time());
+            }
+
+            return $this->sendLoginResponse($request);
+        }
+        return $this->sendFailedLoginResponse($request);
+    }
+    public function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        if ($response = $this->authenticated($request, $this->guard()->user())) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect()->intended($this->redirectPath());
+    }
+
+    public function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+        $user = Auth::user();
+        if ($user->role == 3) {
+            return  '/home';
+        }
+        if ($user->role == 1) {
+            return  '/admin-home';
+        }
+        if ($user->role == 2) {
+            return  '/doctor-home';
+        }
     }
 }
