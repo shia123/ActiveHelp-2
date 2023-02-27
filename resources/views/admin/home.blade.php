@@ -41,7 +41,7 @@ label {
                 <div class="row nav-ro">
                    <div class="col-lg-3 col-md-4 col-sm-12">
                        <!--<img src="assets/images/logo.jpg" alt="">-->
-                       <h1 style="padding-top: 20px;color: #16b0a6;">ActiveHelp</h1>
+                       <h1 style="padding-top: 20px;color: green;">ActiveHelp</h1>
                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
                    </div>
                    <div id="menu" class="col-lg-7 col-md-8 d-none d-md-block no-padding">
@@ -51,13 +51,13 @@ label {
                             <li><a href="services.html">Services</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="gallery.html">Gallery</a></li> -->
-                            <li><a href="https://activehelp.site/forum">Forum</a></li> 
+                            <li><a href="http://127.0.0.1:8000/forum">Forum</a></li> 
                             <li><a href="#doctor-chat">Meet our Doctors</a></li>
                         </ul>
                    </div>
                    <div class="col-sm-2 d-none d-lg-block">
                        <a href="{{route('login')}}">
-                        <button class="btn btn-success">Book an Appointment</button>
+                        <button class="btn btn-dark">Book an Appointment</button>
                        </a>
                    </div>
                 </div>
@@ -113,9 +113,9 @@ label {
             title:'Psychbot',
             aboutText: 'Write Something',
             introMessage: "Hello there! My name is PsychBot.",
-            mainColor:'#408591',
+            mainColor:'#227a1d',
             aboutText:'Powerd by ActiveHealth',
-            bubbleBackground:'#408591',
+            bubbleBackground:'#186613',
             headerTextColor: '#fff',
         };
     </script>

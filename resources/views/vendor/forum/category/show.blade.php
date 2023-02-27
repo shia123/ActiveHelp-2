@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-flex flex-row justify-content-between mb-2">
-        <h2 style="color: {{ $category->color }};">
+        <h2 style="color:green;">
             {{ $category->title }} &nbsp;
             @if ($category->description)
                 <small>{{ $category->description }}</small>
@@ -15,13 +15,13 @@
         <div class="clearfix">
             @if ($category->accepts_threads)
                 @can ('createThreads', $category)
-                    <a href="{{ Forum::route('thread.create', $category) }}" class="btn btn-primary float-end">{{ trans('forum::threads.new_thread') }}</a>
+                    <a href="{{ Forum::route('thread.create', $category) }}" class="btn btn-dark float-end">{{ trans('forum::threads.new_thread') }}</a>
                 @endcan
             @endif
 
             <div class="btn-group" role="group">
                 @can ('manageCategories')
-                    <button type="button" class="btn btn-secondary" data-open-modal="edit-category">
+                    <button type="button" class="btn btn-dark" data-open-modal="edit-category">
                         {{ trans('forum::general.edit') }}
                     </button>
                 @endcan
@@ -114,7 +114,7 @@
                                             @endif
 
                                             <div class="text-end">
-                                                <button type="submit" class="btn btn-primary" @click="submit" :disabled="selectedAction == null">{{ trans('forum::general.proceed') }}</button>
+                                                <button type="submit" class="btn btn-dark" @click="submit" :disabled="selectedAction == null">{{ trans('forum::general.proceed') }}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                 <div class="col col-xs-4 text-end">
                     @if ($category->accepts_threads)
                         @can ('createThreads', $category)
-                            <a href="{{ Forum::route('thread.create', $category) }}" class="btn btn-primary">{{ trans('forum::threads.new_thread') }}</a>
+                            <a href="{{ Forum::route('thread.create', $category) }}" class="btn btn-dark">{{ trans('forum::threads.new_thread') }}</a>
                         @endcan
                     @endif
                 </div>
@@ -153,7 +153,7 @@
     @if (! $threads->isEmpty())
         @can ('markThreadsAsRead')
             <div class="text-center mt-3">
-                <button class="btn btn-primary px-5" data-open-modal="mark-threads-as-read">
+                <button class="btn btn-dark px-5" data-open-modal="mark-threads-as-read">
                     <i data-feather="book"></i> {{ trans('forum::general.mark_read') }}
                 </button>
             </div>

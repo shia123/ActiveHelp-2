@@ -8,13 +8,13 @@
 
     td,
     th {
-        border: 1px solid #dddddd;
+        border: 1px solid #5aa84c;
         text-align: left;
         padding: 8px;
     }
 
     tr:nth-child(even) {
-        background-color: #dddddd;
+        background-color: #5aa84c;
     }
 </style>
 @section('content')
@@ -78,7 +78,7 @@ if ($useruuid == '2022' || $useruuid == '0') {
                             <td>
                                 <form method="post" action="cancel-appointment/{{$list_scheds->id}}">
                                     @csrf
-                                    <button class="btn btn-danger " type="submit">
+                                    <button class="btn btn-dark" type="submit">
                                         Cancel Appointment
                                     </button>
                                 </form>

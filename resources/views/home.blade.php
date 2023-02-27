@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-md-12">
             
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Booking An Appointment
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+  Book an appointment
 </button>
         </div>
     </div>
@@ -20,8 +20,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <div class="col-md-12 text-center">
+                <div style="background-image: url(https://images.unsplash.com/photo-1494208133010-7227229a632a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80.webp); height: 40px; width: 854px; border: 0px; color:white;">
+                {{ __('Dashboard') }}</div></div>
+                <div style="background-image: url(https://images.unsplash.com/photo-1536147210925-5cb7a7a4f9fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80.webp); color:white";>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -38,25 +40,28 @@
                             if($userid =='2022' || $userid =='9832'){
                         ?>
 
-                            <a class="btn btn-primary create-gc" href="/group/create">Create a chat room</a>
+                            <a class="btn btn-dark create-gc" href="/group/create">Create a chat room</a>
 
                         <?php }?>    
 
                         </div>
                         <div class="col-md-6" style="text-align: right;">
-                            <a class="btn btn-light" href="/group/join">Join a chat room</a>
+                            <a class="btn btn-dark" href="/group/join">
+                                <div style="color:white;">Join a chat room </div></a>
                         </div>
                     </div> 
                     <div class="row">
                         <div class="col-md-12 mt-5">
                             <div class="card">
-                                <div class="card-header">Private Chat & Community Chat</div>
+                            <div style="background-image: url(https://images.unsplash.com/photo-1494208133010-7227229a632a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80.webp); height: px; width: 820px; border: 0px; color:white;">
+                                <div class="card-header">
+                                Private Chat & Community Chat</div></div>
 
                                 <div class="card-body">
                                     @foreach($groups as $group)
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h4> <a href="/group/{{$group->id}}" style="color: black;"> {{$group->name}} </a> </h4>
+                                            <h4> <a href="/group/{{$group->id}}" style="color: green;"> {{$group->name}} </a> </h4>
                                         </div>
                                         <?php 
                                             $userid= Auth::user()->uuid;
@@ -84,8 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    </div>                              
                 </div>
             </div>
         </div>

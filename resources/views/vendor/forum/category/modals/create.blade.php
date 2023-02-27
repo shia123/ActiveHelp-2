@@ -26,6 +26,6 @@
     @include ('forum::category.partials.inputs.color')
 
     @slot('actions')
-        <button type="submit" class="btn btn-primary pull-right">{{ trans('forum::general.create') }}</button>
+        <button type="submit" class="btn btn-dark pull-right">{{ trans('forum::general.create') }}</button>
     @endslot
 @endcomponent

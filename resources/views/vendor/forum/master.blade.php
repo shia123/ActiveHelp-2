@@ -178,7 +178,7 @@
 <body>
     <nav class="v-navbar navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="https://activehelp.site/home">ActiveHelp Forum</a>
+            <a class="navbar-brand" href="http://127.0.0.1:8000">ActiveHelp Forum</a>
             <button class="navbar-toggler" type="button" :class="{ collapsed: isCollapsed }" @click="isCollapsed = ! isCollapsed">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -347,20 +347,20 @@
 
             swatches: [
                 '{{ config('forum.web.default_category_color') }}',
-                '#f44336',
-                '#e91e63',
-                '#9c27b0',
-                '#673ab7',
-                '#3f51b5',
-                '#2196f3',
-                '#03a9f4',
-                '#00bcd4',
-                '#009688',
-                '#4caf50',
-                '#8bc34a',
-                '#cddc39',
-                '#ffeb3b',
-                '#ffc107'
+                '#1da334',
+                '#0d8522',
+                '#166124',
+                '#369e3d',
+                '#1da334',
+                '#0d8522',
+                '#166124',
+                '#369e3d',
+                '#1da334',
+                '#0d8522',
+                '#166124',
+                '#369e3d',
+                '#1da334',
+                '#0d8522',
             ],
 
             components: {

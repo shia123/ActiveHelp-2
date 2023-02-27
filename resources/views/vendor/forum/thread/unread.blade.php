@@ -22,7 +22,7 @@
     @if (! $threads->isEmpty())
         @can ('markThreadsAsRead')
             <div class="text-center">
-                <button class="btn btn-primary px-5" data-open-modal="mark-as-read">
+                <button class="btn btn-dark px-5" data-open-modal="mark-as-read">
                     <i data-feather="book"></i> {{ trans('forum::general.mark_read') }}
                 </button>
             </div>

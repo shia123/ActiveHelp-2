@@ -39,10 +39,10 @@ label {
         <nav  class="">
             <div class="container">
                 <div class="row nav-ro">
-                   <div class="col-lg-3 col-md-4 col-sm-12">
+                   <div class="col-lg-3 col-md-4 col-sm-10">
                        <!--<img src="assets/images/logo.jpg" alt="">-->
-                       <h1 style="padding-top: 20px;color: #16b0a6;">ActiveHelp</h1>
-                       <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                       <h1 style="padding-top: 20px;color: green;">ActiveHelp</h1>
+                       <!--<a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a> -->
                    </div>
                    <div id="menu" class="col-lg-7 col-md-8 d-none d-md-block no-padding">
                        <ul>
@@ -51,11 +51,11 @@ label {
                             <li><a href="services.html">Services</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="gallery.html">Gallery</a></li> -->
-                            <li><a href="https://activehelp.site/forum">Forum</a></li> 
+                            <li><a href="http://127.0.0.1:8000/forum">Forum</a></li> 
                             <li><a href="#doctor-chat">Meet our Doctors</a></li>
                         </ul>
                    </div>
-                   <div class="col-sm-2 d-none d-lg-block">
+                   <div class="col-sm-1 d-none d-lg-block">
                        <a href="{{route('login')}}">
                         <button class="btn btn-success">Book an Appointment</button>
                        </a>
@@ -66,7 +66,7 @@ label {
     </header>
 
     <!-- ################# Slider Starts Here#######################--->
-     <div class="slider">
+ <div class="slider">
         <!-- Set up your HTML -->
         <div class="owl-carousel ">
             <div class="slider-img">
@@ -76,7 +76,7 @@ label {
                         <div class="row">
                             <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
                                 <div class="slider-captions">
-                                    <h1 class="slider-title">Feeling stress or anxious?</h1>
+                                    <h1 class="slider-title">Feeling stressed or anxious?</h1>
                                     <p class="slider-text hidden-xs">We can help you conquer a wide range of psychological and emotional problems.</p>
                                     <!-- <a href="#" class="btn btn-success hidden-xs">View All Therapies</a> -->
                                 </div>
@@ -115,7 +115,7 @@ label {
             </div>
         </div>
     </div>
-    
+
     <section class="our-blog container-fluid">
   		<div class="container">
   		<div class="session-title row">
@@ -131,7 +131,7 @@ label {
 
 							<div class="blog-single-det">
 							
-								<h6>DEPRESSION</h6>
+								<h6>Depression</h6>
 								<!--<p>Not the answer you're looking for?</p>-->
 								<a href="blog_single.html">
 									<!-- <button class="btn btn-success btn-sm">More Detail</button> -->
@@ -146,7 +146,7 @@ label {
 
 							<div class="blog-single-det">
 								
-								<h6>ANXIETY</h6>
+								<h6>Anxiety</h6>
 								<!--<p>Not the answer you're looking for?</p>-->
 								<a href="blog_single.html">
 									<!-- <button class="btn btn-success btn-sm">More Detail</button> -->
@@ -162,7 +162,7 @@ label {
 
 							<div class="blog-single-det">
 							
-								<h6>Relationship Issue</h6>
+								<h6>Relationship Issues</h6>
 								<!--<p>Not the answer you're looking for?</p>-->
 								<a href="blog_single.html">
 									<!-- <button class="btn btn-success btn-sm">More Detail</button> -->
@@ -185,7 +185,7 @@ label {
   	<!-- ################# Doctors Message Starts Here#######################--->
 
 
-    <div class="doctor-message" style=" background-image: url("homepage.png"); ">
+    <div class="doctor-message" style=" background-image: url(homepage.png); ">
         <img src="/assets/images/homepage.png" alt="">
         <div class="inner-lay">
             <div class="container">
@@ -233,7 +233,7 @@ label {
   	            </div>
   	            <div class="col-lg-4 col-md-12">
   	                 <div class="single-dd">
-  	                    <h4>Why Choos Us ?</h4>
+  	                    <h4>Why Choose Us ?</h4>
   	                    <p>To promote the rights and best interests of patients and those actually or potentially making use of psychiatric services for mental illness, including substance use disorders.</p>
   	                    
   	                    
@@ -285,8 +285,8 @@ label {
                         <!--</tr>-->
                         
                         <!--</table>-->
-                        <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                        <a href="{{route('login')}}" style="display: block;margin: auto;width: 200px;">
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
   	                </div>
@@ -308,7 +308,7 @@ label {
                         	03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>  
   	                </div>
@@ -329,7 +329,7 @@ label {
                         	03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>  
                        
@@ -351,7 +351,7 @@ label {
                         	03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
   	                </div>
@@ -369,7 +369,7 @@ label {
                         	03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
   	                </div>
@@ -387,7 +387,7 @@ label {
                         	03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
   	                </div>
@@ -405,7 +405,7 @@ label {
                         	03:00 P.M.
                         </p>
                        <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
   	                </div>
@@ -423,7 +423,7 @@ label {
                         	03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
   	                </div>
@@ -442,7 +442,7 @@ label {
                             03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
                     </div>
@@ -460,7 +460,7 @@ label {
                             03:00 P.M.
                         </p>
                         <a href="{{route('login')}}" style="display: block;margin: auto;width: 250px;">
-                            <button class="btn btn-success" style="width: 100%;">Book an Appointment</button>
+                            <button class="btn btn-dark" style="width: 100%;">Book an Appointment</button>
                         </a>  
                         <br>
                     </div>
@@ -537,9 +537,9 @@ label {
             title:'Psychbot',
             aboutText: 'Write Something',
             introMessage: "Hello there! My name is PsychBot.",
-            mainColor:'#408591',
+            mainColor:'#227a1d',
             aboutText:'Powerd by ActiveHealth',
-            bubbleBackground:'#408591',
+            bubbleBackground:'#186613',
             headerTextColor: '#fff',
         };
     </script>

@@ -9,7 +9,7 @@
 
             @if (! isset($category))
                 <br>
-                <a href="{{ Forum::route('category.show', $thread->category) }}" style="color: {{ $thread->category->color }};">{{ $thread->category->title }}</a>
+                <a href="{{ Forum::route('category.show', $thread->category) }}" style="color: green;">{{ $thread->category->title }}</a>
             @endif
         </div>
         <div class="col-sm text-md-end">
@@ -25,7 +25,7 @@
             @if ($thread->trashed())
                 <span class="badge rounded-pill bg-danger">{{ trans('forum::general.deleted') }}</span>
             @endif
-            <span class="badge rounded-pill bg-primary" @if (isset($category))style="background: {{ $category->color }};"@endif>
+            <span class="badge rounded-pill bg-dark" @if (isset($category))style="color: green;"@endif>
                 {{ trans('forum::general.replies') }}: 
                 {{ $thread->reply_count }}
             </span>

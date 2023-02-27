@@ -5,8 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+            <div class="col-md-12 text-center">
+                <div style="background-image: url(https://images.unsplash.com/photo-1494208133010-7227229a632a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80.webp); height: 40px; width: 854px; border: 0px; color:white;">
+                {{ __('Dashboard') }}</div></div>
+                <div style="background-image: url(https://images.unsplash.com/photo-1536147210925-5cb7a7a4f9fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80.webp); color:white";>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -18,9 +20,9 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="code" class="col-md-4 col-form-label text-md-right">Chat Code</label>
+                            <label for="code" class="col-md-0 col-form-label text-md-center">Chat Code</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="name" autofocus>
 
                                 @error('code')
@@ -32,12 +34,14 @@
                         </div> <br>
 
                         <div class="form-group row mb-2">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-0 text-md-center">
+                                <button type="submit" class="btn btn-dark">
                                     Join
                                 </button>
                             </div>
                         </div>
+                        <div class="text-center">
+                            Note: The chat code is the doctor's contact. The code is found on the homepage, under the doctor's name.
                     </form>
 
                 </div>

@@ -5,7 +5,7 @@
         <h2 class="flex-grow-1">{{ trans('forum::general.manage') }}</h2>
 
         @can ('createCategories')
-            <button type="button" class="btn btn-primary" data-open-modal="create-category">
+            <button type="button" class="btn btn-dark" data-open-modal="create-category">
                 {{ trans('forum::categories.create') }}
             </button>
 
@@ -23,7 +23,7 @@
         </transition>
 
         <div class="text-end py-3">
-            <button type="button" class="btn btn-primary px-5" :disabled="isSavingDisabled" @click="onSave">
+            <button type="button" class="btn btn-dark px-5" :disabled="isSavingDisabled" @click="onSave">
                 {{ trans('forum::general.save') }}
             </button>
         </div>

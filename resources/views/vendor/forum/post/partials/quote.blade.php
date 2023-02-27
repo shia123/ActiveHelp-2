@@ -1,4 +1,4 @@
-<div class="card mb-2" style="border-color: #eee;">
+<div class="card mb-2" style="border-color: green;">
     <div class="card-body">
         <div class="mb-2">
             <span class="float-end">

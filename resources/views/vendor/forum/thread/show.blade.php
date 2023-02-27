@@ -8,17 +8,17 @@
             <div>
                 @if (Gate::allows('deleteThreads', $thread->category) && Gate::allows('delete', $thread))
                     @if ($thread->trashed())
-                        <a href="#" class="btn btn-danger mr-3 mb-2" data-open-modal="perma-delete-thread">
+                        <a href="#" class="btn btn-dark mr-3 mb-2" data-open-modal="perma-delete-thread">
                             <i data-feather="trash"></i> {{ trans('forum::general.perma_delete') }}
                         </a>
                     @else
-                        <a href="#" class="btn btn-danger mr-3 mb-2" data-open-modal="delete-thread">
+                        <a href="#" class="btn btn-dark mr-3 mb-2" data-open-modal="delete-thread">
                             <i data-feather="trash"></i> {{ trans('forum::general.delete') }}
                         </a>
                     @endif
                 @endif
                 @if ($thread->trashed() && Gate::allows('restoreThreads', $thread->category) && Gate::allows('restore', $thread))
-                    <a href="#" class="btn btn-secondary mb-2" data-open-modal="restore-thread">
+                    <a href="#" class="btn btn-dark mb-2" data-open-modal="restore-thread">
                         <i data-feather="refresh-cw"></i> {{ trans('forum::general.restore') }}
                     </a>
                 @endif
@@ -31,33 +31,33 @@
                         @if (! $thread->trashed())
                             @can ('lockThreads', $category)
                                 @if ($thread->locked)
-                                    <a href="#" class="btn btn-secondary" data-open-modal="unlock-thread">
+                                    <a href="#" class="btn btn-dark" data-open-modal="unlock-thread">
                                         <i data-feather="unlock"></i> {{ trans('forum::threads.unlock') }}
                                     </a>
                                 @else
-                                    <a href="#" class="btn btn-secondary" data-open-modal="lock-thread">
+                                    <a href="#" class="btn btn-dark" data-open-modal="lock-thread">
                                         <i data-feather="lock"></i> {{ trans('forum::threads.lock') }}
                                     </a>
                                 @endif
                             @endcan
                             @can ('pinThreads', $category)
                                 @if ($thread->pinned)
-                                    <a href="#" class="btn btn-secondary" data-open-modal="unpin-thread">
+                                    <a href="#" class="btn btn-dark" data-open-modal="unpin-thread">
                                         <i data-feather="arrow-down"></i> {{ trans('forum::threads.unpin') }}
                                     </a>
                                 @else
-                                    <a href="#" class="btn btn-secondary" data-open-modal="pin-thread">
+                                    <a href="#" class="btn btn-dark" data-open-modal="pin-thread">
                                         <i data-feather="arrow-up"></i> {{ trans('forum::threads.pin') }}
                                     </a>
                                 @endif
                             @endcan
                             @can ('rename', $thread)
-                                <a href="#" class="btn btn-secondary" data-open-modal="rename-thread">
+                                <a href="#" class="btn btn-dark" data-open-modal="rename-thread">
                                     <i data-feather="edit-2"></i> {{ trans('forum::general.rename') }}
                                 </a>
                             @endcan
                             @can ('moveThreadsFrom', $category)
-                                <a href="#" class="btn btn-secondary" data-open-modal="move-thread">
+                                <a href="#" class="btn btn-dark" data-open-modal="move-thread">
                                     <i data-feather="corner-up-right"></i> {{ trans('forum::general.move') }}
                                 </a>
                             @endcan
@@ -96,10 +96,10 @@
                 @if (! $thread->trashed())
                     @can ('reply', $thread)
                         <div class="btn-group" role="group">
-                            <a href="{{ Forum::route('post.create', $thread) }}" class="btn btn-primary">
+                            <a href="{{ Forum::route('post.create', $thread) }}" class="btn btn-dark">
                                 {{ trans('forum::general.new_reply') }}
                             </a>
-                            <a href="#quick-reply" class="btn btn-primary">
+                            <a href="#quick-reply" class="btn btn-dark">
                                 {{ trans('forum::general.quick_reply') }}
                             </a>
                         </div>
@@ -126,7 +126,7 @@
         @if ((count($posts) > 1 || $posts->currentPage() > 1) && (Gate::allows('deletePosts', $thread) || Gate::allows('restorePosts', $thread)) && count($selectablePosts) > 0)
                 <div class="fixed-bottom-right pb-xs-0 pr-xs-0 pb-sm-3 pr-sm-3">
                     <transition name="fade">
-                        <div class="card text-white bg-secondary shadow-sm" v-if="selectedPosts.length">
+                        <div class="card text-white bg-dark shadow-sm" v-if="selectedPosts.length">
                             <div class="card-header text-center">
                                 {{ trans('forum::general.with_selection') }}
                             </div>
@@ -151,7 +151,7 @@
                                 @endif
 
                                 <div class="text-end">
-                                    <button type="submit" class="btn btn-primary" @click="submitPosts">{{ trans('forum::general.proceed') }}</button>
+                                    <button type="submit" class="btn btn-dark" @click="submitPosts">{{ trans('forum::general.proceed') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                         </div>
 
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary px-5">{{ trans('forum::general.reply') }}</button>
+                            <button type="submit" class="btn btn-dark px-5">{{ trans('forum::general.reply') }}</button>
                         </div>
                     </form>
                 </div>
@@ -192,7 +192,7 @@
             {{ trans('forum::general.generic_confirm') }}
 
             @slot('actions')
-                <button type="submit" class="btn btn-primary">{{ trans('forum::general.proceed') }}</button>
+                <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
             @endslot
         @endcomponent
     @endif
@@ -216,7 +216,7 @@
             @endif
 
             @slot('actions')
-                <button type="submit" class="btn btn-danger">{{ trans('forum::general.proceed') }}</button>
+                <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
             @endslot
         @endcomponent
 
@@ -232,7 +232,7 @@
                 {{ trans('forum::general.generic_confirm') }}
 
                 @slot('actions')
-                    <button type="submit" class="btn btn-danger">{{ trans('forum::general.proceed') }}</button>
+                    <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
                 @endslot
             @endcomponent
         @endif
@@ -250,7 +250,7 @@
                     {{ trans('forum::general.generic_confirm') }}
 
                     @slot('actions')
-                        <button type="submit" class="btn btn-primary">{{ trans('forum::general.proceed') }}</button>
+                        <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
                     @endslot
                 @endcomponent
             @else
@@ -263,7 +263,7 @@
                     {{ trans('forum::general.generic_confirm') }}
 
                     @slot('actions')
-                        <button type="submit" class="btn btn-primary">{{ trans('forum::general.proceed') }}</button>
+                        <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
                     @endslot
                 @endcomponent
             @endif
@@ -280,7 +280,7 @@
                     {{ trans('forum::general.generic_confirm') }}
 
                     @slot('actions')
-                        <button type="submit" class="btn btn-primary">{{ trans('forum::general.proceed') }}</button>
+                        <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
                     @endslot
                 @endcomponent
             @else
@@ -293,7 +293,7 @@
                     {{ trans('forum::general.generic_confirm') }}
 
                     @slot('actions')
-                        <button type="submit" class="btn btn-primary">{{ trans('forum::general.proceed') }}</button>
+                        <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
                     @endslot
                 @endcomponent
             @endif
@@ -314,7 +314,7 @@
                 </div>
 
                 @slot('actions')
-                    <button type="submit" class="btn btn-primary">{{ trans('forum::general.proceed') }}</button>
+                    <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
                 @endslot
             @endcomponent
         @endcan
@@ -336,7 +336,7 @@
                 </div>
 
                 @slot('actions')
-                    <button type="submit" class="btn btn-primary">{{ trans('forum::general.proceed') }}</button>
+                    <button type="submit" class="btn btn-dark">{{ trans('forum::general.proceed') }}</button>
                 @endslot
             @endcomponent
         @endcan

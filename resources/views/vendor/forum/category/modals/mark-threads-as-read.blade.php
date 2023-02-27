@@ -9,7 +9,7 @@
     <p>{{ trans('forum::general.generic_confirm') }}</p>
 
     @slot('actions')
-        <button type="submit" class="btn btn-primary pull-right">
+        <button type="submit" class="btn btn-dark pull-right">
             {{ trans('forum::general.mark_read') }}
         </button>
     @endslot

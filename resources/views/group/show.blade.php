@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <p>
-                                    <a class="btn btn-info" href="/group/edit/{{$group->id}}" style="color:white;">Edit</a>
+                                    <a class="btn btn-dark" href="/group/edit/{{$group->id}}" style="color:white;">Edit</a>
                                 </p>
                             </div>
                             
@@ -27,13 +27,13 @@
                                     @csrf
                                     @method('Delete')
 
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete chat room</button>
+                                    <button type="submit" class="btn btn-dark" onclick="return confirm('Are you sure?')">Delete chat room</button>
                                 </form>
                             </div>
 
                             <div class="col-md-4">
                                 <p>
-                                    <a class="btn btn-warning" href="/group/members_list/{{$group->id}}" style="color:white;">Remove users</a>
+                                    <a class="btn btn-dark" href="/group/members_list/{{$group->id}}" style="color:white;">Remove users</a>
                                 </p>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                        <button class="btn btn-primary" type="submit">Send message</button>
+                        <button class="btn btn-dark" type="submit">Send message</button>
                     </form>
                 </div>
             </div>
