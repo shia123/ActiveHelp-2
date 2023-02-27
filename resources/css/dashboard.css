@@ -1,0 +1,51 @@
+:root {
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+
+    --lightgreen: #99fbbf;
+    --lighblue: #9cdbf7;
+
+    --btn1: #18b4ac;
+    --btn2: #6cc7b1;
+    --btn3: #178643;
+    --btn4: #e63535;
+
+    --bg1: #c1f9ee;
+    --bg2: #ff9d9d;
+    
+}
+
+.textarea{
+    background-color: var(--bg1);
+    text-transform: capitalize;
+}
+
+.textarea .post{
+    font-style: italic;
+}
+
+.textarea strong{
+    font-size: larger;
+    text-transform: uppercase;
+}
+
+.postarea{
+    background-color: var(--bg1);
+    text-transform: capitalize;
+
+}
+
+.postarea strong{
+    font-size: larger;
+    text-transform: uppercase;
+}
+
+.response_area{
+    width: 50rem;
+    background-color: var(--bg2);
+}
+
+.message_logo{
+    height: 7rem;
+}
