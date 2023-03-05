@@ -92,9 +92,9 @@
                             </div>
                         </div><br>
 
-                   
-                        <div class="form-group row">
-                            <label for="email" class="col-md-5 col-form-label text-md-right">If you are a doctor, type your {{ __('Code') }} here</label>
+
+                        <!-- <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">If you are a Doctor type your {{ __('Code') }} Here</label>
 
                             <div class="col-md-12">
                                 <input id="uuid" type="text" class="form-control @error('email') is-invalid @enderror" name="uuid" value="0" autocomplete="uuid">
@@ -105,7 +105,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div> <br>
+                        </div> <br> -->
 
 
 

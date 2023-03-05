@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -48,8 +49,18 @@ class LoginController extends Controller
             if ($request->hasSession()) {
                 $request->session()->put('auth.password_confirmed_at', time());
             }
+            if ($request->user()->role == 2 && ($request->user()->status =='pending' || $request->user()->status =='rejected')) {
+                $this->guard()->logout();
 
-            return $this->sendLoginResponse($request);
+                $request->session()->invalidate();
+
+                $request->session()->regenerateToken();
+                throw ValidationException::withMessages([
+                    $this->username() => [trans('auth.register-doctor')],
+                ]);
+            } else {
+                return $this->sendLoginResponse($request);
+            }
         }
         return $this->sendFailedLoginResponse($request);
     }

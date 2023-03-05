@@ -21,14 +21,19 @@ Route::get('/', function () {
 
 Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle']);
 Route::middleware('auth', 'doctor.auth')->group(function () {
-Route::get('/doctor-home', function () {
-    return view('doctor.home');
-});
+    Route::get('/doctor-home', function () {
+        return view('doctor.home');
+    });
 });
 Route::middleware('auth', 'admin.auth')->group(function () {
-Route::get('/admin-home', function () {
-    return view('admin.home');
-});
+    Route::get('/admin-home', function () {
+
+        return view('admin.home');
+    });
+    Route::get('/doctors-list', [App\Http\Controllers\AdminController::class, 'doctorsList'])->name('doctorsList');
+    Route::post('/manage-doctor/{id}', [App\Http\Controllers\AdminController::class, 'manageDoctor'])->name('manageDoctor');
+    Route::post('/manage-profile', [App\Http\Controllers\AdminController::class, 'editProfile'])->name('editProfile');
+    
 });
 Auth::routes();
 Route::middleware('auth', 'patient.auth')->group(function () {

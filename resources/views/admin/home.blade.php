@@ -67,6 +67,7 @@ label {
     <section class="our-blog container-fluid" style="margin-top: 34rem;">
   		<div class="container" style="margin-top: 34rem;">
           <h1> ADMIN PAGE</h1>
+          <a href="/doctors-list">Manage Doctors</a>
         </div>
     </section>
 

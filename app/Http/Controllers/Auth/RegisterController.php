@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\DoctorMail;
 use App\Mail\PatientMail;
+use Illuminate\Validation\ValidationException;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
@@ -78,12 +82,32 @@ class RegisterController extends Controller
             Mail::to($data['email'])->send(new PatientMail($data['email']));
         }
         return User::create([
-            'uuid' => $data['uuid'],
             'username' => $data['username'],
             'phone' => $data['phone'],
             'email' => $data['email'],
+            'status' => $data['role'] == 2 ? 'pending' : 'approved',
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
         ]);
+    }
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        if ($user->role == 2) {
+
+            return redirect()->back()->with('message', 'Register Complete. Please wait for our Admin approval. Thanks');
+        } else {
+            $this->guard()->login($user);
+
+            if ($response = $this->registered($request, $user)) {
+                return $response;
+            }
+
+            return $request->wantsJson()
+                ? new JsonResponse([], 201)
+                : redirect($this->redirectPath());
+        }
     }
 }

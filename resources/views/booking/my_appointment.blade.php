@@ -21,9 +21,7 @@
 
 
 <?php
-$useruuid = Auth::user()->uuid;
 
-if ($useruuid == '2022' || $useruuid == '0') {
 ?>
     <div class="container-fluid">
         <div class="container">
@@ -44,7 +42,7 @@ if ($useruuid == '2022' || $useruuid == '0') {
                         </tr>
 
 
-                        @foreach($list_sched as $list_scheds)
+                        @foreach($doctors as $list_scheds)
                         <tr>
                             <td>{{$list_scheds->name}}</td>
                             <td>{{$list_scheds->email}}</td>
@@ -93,6 +91,6 @@ if ($useruuid == '2022' || $useruuid == '0') {
         </div>
     </div>
 
-<?php } ?>
+<?php  ?>
 
 @endsection
