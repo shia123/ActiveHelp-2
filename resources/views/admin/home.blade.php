@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ActiveHelp</title>
 
-    <link rel="shortcut icon" href="assets/images/fav.jpg">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
     <link rel="stylesheet" href="assets/plugins/slider/css/owl.carousel.min.css">
@@ -42,9 +41,9 @@ label {
                    <div class="col-lg-3 col-md-4 col-sm-12">
                        <!--<img src="assets/images/logo.jpg" alt="">-->
                        <h1 style="padding-top: 20px;color: green;">ActiveHelp</h1>
-                       <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+
                    </div>
-                   <div id="menu" class="col-lg-7 col-md-8 d-none d-md-block no-padding">
+                   <div id="menu" class="col-lg-7 col-md-7 d-none d-md-block no-padding">
                        <ul>
                             <!-- <li><a href="index.html">Home</a></li>
                             <li><a href="about_us.html">About Us</a></li>
@@ -55,11 +54,11 @@ label {
                             <li><a href="#doctor-chat">Meet our Doctors</a></li>
                         </ul>
                    </div>
-                   <div class="col-sm-2 d-none d-lg-block">
+
                        <a href="{{route('login')}}">
                         <button class="btn btn-dark">Book an Appointment</button>
                        </a>
-                   </div>
+
                 </div>
             </div>
         </nav>
