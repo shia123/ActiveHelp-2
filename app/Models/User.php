@@ -49,6 +49,17 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Group', 'admin_id');
     }
 
+    public function getCode(): ?string
+    {
+        $doctor = Group::where('admin_id', $this->id)->first();
+        return $doctor->code;
+    }
+
+    public function appointments()
+    {
+        return $this->belongsTo('App\Models\Appointment', 'doctor');
+    }
+
     public function group_member()
     {
         return $this->belongsToMany('App\Models\Group', 'group_participants', 'user_id', 'group_id')->orderBy('updated_at', 'desc');

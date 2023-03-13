@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+
 class AdminController extends Controller
 {
     //
@@ -48,16 +49,16 @@ class AdminController extends Controller
         return redirect()->back()->with(compact('doctors'));
     }
 
-    public function editProfile(Request $request)
+    public function editProfileAdmin(Request $request)
     {
+
 
         $formData = array(
             'username'        =>  $request->input('username'),
             'email'        =>  $request->input('email'),
             'phone'        =>  $request->input('phone'),
         );
-        $cancel = User::where('id', $request->input('id'))->update($formData);
-
+        User::where('id', $request->input('id'))->update($formData);
         $doctors = User::whereIn('role', [2, 3])
             ->where('status', '!=', 'rejected')
             ->orderBy('created_at', 'desc')

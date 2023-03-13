@@ -1,167 +1,190 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ActiveHelp</title>
+@section('content')
+<div class="container">
+    <?php
+    $userid = Auth::user()->uuid;
+    $name = Auth::user()->username;
 
-    <link rel="shortcut icon" href="assets/images/fav.jpg">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
-    <link rel="stylesheet" href="assets/plugins/slider/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/plugins/slider/css/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <style>
-        .owl-dots{
-            display: none
-        }
 
-        label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
-}
+    ?>
+    <div class="row">
 
-input,
-label {
-    margin: .4rem 0;
-}
+        <div class="col-md-12">
 
-    </style>
-</head>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#editModal">
+                Edit Profile
+            </button>
+        </div>
+    </div>
+    <?php  ?>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="col-md-12 text-center">
+                    <div style="background-image: url(https://images.unsplash.com/photo-1494208133010-7227229a632a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80.webp); height: 40px; width: 854px; border: 0px; color:white;">
+                        {{ __('Dashboard') }}
+                    </div>
+                </div>
+                <div style="background-image: url(https://images.unsplash.com/photo-1536147210925-5cb7a7a4f9fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80.webp); color:white" ;>
+                    <div class="container-fluid">
 
-<body>
+                        <div class="container">
+                            <div class="row">
 
-    <!-- ################# Header Starts Here#######################--->
+                                <div class="col-md-12">
+                                    <h5>Manage Appointments</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <table style="color:white;">
+                                        <tr>
+                                            <th style="width:10rem">Patient Name</th>
+                                            <th style="width:18rem">Patient Email</th>
+                                            <th style="width:10rem">Patient Phone</th>
+                                            <th style="width:15rem">Date Register</th>
+                                            <th style="width:10rem">Action</th>
+                                        </tr>
 
-    <header id="menu-jk">
-        <nav  class="">
-            <div class="container">
-                <div class="row nav-ro">
-                   <div class="col-lg-3 col-md-4 col-sm-12">
-                       <!--<img src="assets/images/logo.jpg" alt="">-->
-                       <h1 style="padding-top: 20px;color: green;">ActiveHelp</h1>
-                       <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
-                   </div>
-                   <div id="menu" class="col-lg-7 col-md-8 d-none d-md-block no-padding">
-                       <ul>
-                            <!-- <li><a href="index.html">Home</a></li>
-                            <li><a href="about_us.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="gallery.html">Gallery</a></li> -->
-                            <li><a href="http://127.0.0.1:8000/forum">Forum</a></li> 
-                            <li><a href="#doctor-chat">Meet our Doctors</a></li>
-                        </ul>
-                   </div>
-                   <div class="col-sm-2 d-none d-lg-block">
-                       <a href="{{route('login')}}">
-                        <button class="btn btn-dark">Book an Appointment</button>
-                       </a>
-                   </div>
+
+                                        @foreach($appointments as $appointments)
+                                        <tr>
+                                            <td>{{$appointments->name}}</td>
+                                            <td>{{$appointments->email}}</td>
+                                            <td>{{$appointments->phone}}</td>
+                                            <td>{{$appointments->created_at}}</td>
+                                            <td class="d-flex">
+                                                @if ($appointments->status!='approve')
+                                                <form method="post" action="cancel-appointment-by-doctor/{{$appointments->id}}">
+                                                    @csrf
+                                                    <button class="btn btn-dark" type="submit">
+                                                        Cancel
+                                                    </button>
+                                                </form>
+                                                <form method="post" action="approve-appointment-by-doctor/{{$appointments->id}}">
+                                                    @csrf
+                                                    <button class="btn btn-dark" type="submit">
+                                                        Approve
+                                                    </button>
+                                                </form>
+                                                @endif
+                                                @if ($appointments->status=='approve')
+                                                <span>Approve</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <section class="our-blog container-fluid" style="margin-top: 34rem;">
-  		<div class="container" style="margin-top: 34rem;">
-          <h1> DOCTOR PAGE</h1>
         </div>
-    </section>
+    </div>
 
 
-    <footer class="footer">
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <h2>About Us</h2>
-                    <p>
-                        Smart Eye is a leading provider of information technology, consulting, and business process services. Our dedicated employees offer strategic insights, technological expertise and industry experience.
-                    </p>
-                    <p>We focus on technologies that promise to reduce costs, streamline processes and speed time-to-market, Backed by our strong quality processes and rich experience managing global... </p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2>Useful Links</h2>
-                    <ul class="list-unstyled link-list">
-                        <li><a ui-sref="about" href="#/about">About us</a><i class="fa fa-angle-right"></i></li>
-                        <li><a ui-sref="portfolio" href="#/portfolio">Portfolio</a><i class="fa fa-angle-right"></i></li>
-                        <li><a ui-sref="products" href="#/products">Latest jobs</a><i class="fa fa-angle-right"></i></li>
-                        <li><a ui-sref="gallery" href="#/gallery">Gallery</a><i class="fa fa-angle-right"></i></li>
-                        <li><a ui-sref="contact" href="#/contact">Contact us</a><i class="fa fa-angle-right"></i></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-sm-12 map-img">
-                    <h2>Contact Us</h2>
-                    <address class="md-margin-bottom-40">
-                        BlueDart <br>
-                        Marthandam (K.K District) <br>
-                        Tamil Nadu, IND <br>
-                        Phone: +91 9159669599 <br>
-                        Email: <a href="mailto:info@anybiz.com" class="">info@bluedart.in</a><br>
-                        Web: <a href="smart-eye.html" class="">www.bluedart.in</a>
-                    </address>
 
+
+    <!-- Modal -->
+
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $userId = Auth::user()->id; ?>">
+                        </div><br>
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Email</label>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control   " name="email" required autocomplete="email" autofocus value="<?php echo $email = Auth::user()->email; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Doctor Code</label>
+                            <div class="col-md-6">
+                                <input id="code" type="text" class="form-control   " name="code" required autofocus value="<?php echo $code = Auth::user()->getCode(); ?>">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Clinic</label>
+                            <div class="col-md-6">
+                                <input id="clinic" type="text" class="form-control   " name="clinic" required autofocus value="<?php echo $clinic = Auth::user()->clinic; ?>">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Schedule</label>
+                            <div class="col-md-6">
+
+                                <textarea id="schedule" class="form-control   " name="schedule" required autofocus><?php echo $schedule = Auth::user()->schedule; ?></textarea>
+
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Full name</label>
+                            <div class="col-md-6">
+                                <input id="username" type="username" class="form-control   " name="username" autofocus value="<?php echo $name = Auth::user()->username; ?>">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Phone</label>
+                            <div class="col-md-6">
+                                <input id="phone" type="phone" class="form-control   " name="phone" required autocomplete="phone" autofocus value="<?php echo $phone = Auth::user()->phone; ?>">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary" onClick="editProfile()">Save changes</button>
+                    </div>
                 </div>
-            </div> -->
-        </div>
-        
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
-    <script>
-        var botmanWidget = {
-            // frameEndpoint: "http://127.0.0.1:8000/views/botpage/chat1",
-            title:'Psychbot',
-            aboutText: 'Write Something',
-            introMessage: "Hello there! My name is PsychBot.",
-            mainColor:'#227a1d',
-            aboutText:'Powerd by ActiveHealth',
-            bubbleBackground:'#186613',
-            headerTextColor: '#fff',
-        };
-    </script>
-   
-    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
-    </footer>
-    <div class="copy">
-            <div class="container">
-                <a href="https://www.smarteyeapps.com/">2022 &copy; All Rights Reserved | Designed and Developed by ActiveHelp</a>
-                
-                <span>
-                <a><i class="fab fa-github"></i></a>
-                <a><i class="fab fa-google-plus-g"></i></a>
-                <a><i class="fab fa-pinterest-p"></i></a>
-                <a><i class="fab fa-twitter"></i></a>
-                <a><i class="fab fa-facebook-f"></i></a>
-        </span>
             </div>
-
         </div>
-    
-    </body>
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script src="assets/js/jquery-3.2.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
-<script src="assets/plugins/slider/js/owl.carousel.min.js"></script>
-<script src="assets/js/script.js"></script>
 
-<script>
+        @endsection
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js" integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript" charset="utf-8">
+            function editProfile() {
+                var csrfToken = document.head.querySelector('meta[name="csrf-token"]');
 
-    /*
-	Smooth scroll functionality for anchor links (animates the scroll
-	rather than a sudden jump in the page)
-*/
-$('.js-anchor-link').click(function(e){
-  e.preventDefault();
-  var target = $($(this).attr('href'));
-  if(target.length){
-    var scrollTo = target.offset().top;
-    $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
-  }
-});
-
-</script>
-
-
-</html>
+                fetch('/manage-profile/doctor', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken.content
+                        },
+                        cache: "default",
+                        body: JSON.stringify({
+                            id: document.getElementById("id").value,
+                            email: document.getElementById("email").value,
+                            username: document.getElementById("username").value,
+                            phone: document.getElementById("phone").value,
+                            code: document.getElementById("code").value,
+                            clinic: document.getElementById("clinic").value,
+                            schedule: document.getElementById("schedule").value,
+                        })
+                    }).then((res) => {
+                        if (res.status == 200) {
+                            window.location.reload();
+                        }
+                    })
+                    .catch(err => console.log(err));
+            }
+        </script>

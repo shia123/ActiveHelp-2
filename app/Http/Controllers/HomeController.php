@@ -19,8 +19,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    
-     
     }
 
     /**
@@ -32,7 +30,9 @@ class HomeController extends Controller
     {
         //get group where user is present
         $groups = auth()->user()->group_member;
-        return view('home', compact('groups'));
+        $doctors = Group::with('user')
+            ->get();
+        return view('home', compact('groups', 'doctors'));
     }
 
     public function appointment(Request $request)
@@ -69,7 +69,8 @@ class HomeController extends Controller
     {
 
         $userId = auth()->id();
-        $list_sched = appointment::where('status', 'active')
+        $list_sched = appointment::with('user')
+            ->where('status','!=', 'cancelled')
             ->where('uuid', $userId)
             ->get();
         // echo $userId;
@@ -91,5 +92,18 @@ class HomeController extends Controller
         // echo $userId;
 
         return redirect()->back()->with(compact('list_sched'));
+    }
+
+    public function editProfile(Request $request)
+    {
+
+        $formData = array(
+            'username'        =>  $request->input('username'),
+            'email'        =>  $request->input('email'),
+            'phone'        =>  $request->input('phone'),
+        );
+        $update = User::where('id', $request->input('id'))->update($formData);
+
+        return redirect()->back();
     }
 }

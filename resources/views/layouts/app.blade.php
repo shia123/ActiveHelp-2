@@ -21,7 +21,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="../../css/login.css" rel="stylesheet">
     <!-- Styles -->
     <style>
         .chat-box: {
@@ -46,6 +45,7 @@
                     </a>
                 </div>
                 @if (!Auth::guest())
+                @if(Auth::user()->role==3)
                 <div class="col-md-3">
                     <a class="navbar-brand" href="{{ url(config('forum.web.router.prefix')) }}">
                         Go to Forum
@@ -58,6 +58,7 @@
                         Check My Appointment
                     </a>
                 </div>
+                @endif
                 <div class="col-md-2">
 
 

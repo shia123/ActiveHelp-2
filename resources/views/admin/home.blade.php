@@ -13,20 +13,19 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <style>
-        .owl-dots{
+        .owl-dots {
             display: none
         }
 
         label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
-}
+            display: block;
+            font: 1rem 'Fira Sans', sans-serif;
+        }
 
-input,
-label {
-    margin: .4rem 0;
-}
-
+        input,
+        label {
+            margin: .4rem 0;
+        }
     </style>
 </head>
 
@@ -35,38 +34,43 @@ label {
     <!-- ################# Header Starts Here#######################--->
 
     <header id="menu-jk">
-        <nav  class="">
+        <nav class="">
             <div class="container">
                 <div class="row nav-ro">
-                   <div class="col-lg-3 col-md-4 col-sm-12">
-                       <!--<img src="assets/images/logo.jpg" alt="">-->
-                       <h1 style="padding-top: 20px;color: green;">ActiveHelp</h1>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <!--<img src="assets/images/logo.jpg" alt="">-->
+                        <h1 style="padding-top: 20px;color: green;">ActiveHelp</h1>
 
-                   </div>
-                   <div id="menu" class="col-lg-7 col-md-7 d-none d-md-block no-padding">
-                       <ul>
+                    </div>
+                    <div id="menu" class="col-lg-7 col-md-7 d-none d-md-block no-padding">
+                        <ul>
                             <!-- <li><a href="index.html">Home</a></li>
                             <li><a href="about_us.html">About Us</a></li>
                             <li><a href="services.html">Services</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="gallery.html">Gallery</a></li> -->
-                            <li><a href="http://127.0.0.1:8000/forum">Forum</a></li> 
+                            <li><a href="http://127.0.0.1:8000/forum">Forum</a></li>
                             <li><a href="#doctor-chat">Meet our Doctors</a></li>
                         </ul>
-                   </div>
+                    </div>
 
-                       <a href="{{route('login')}}">
-                        <button class="btn btn-dark">Book an Appointment</button>
-                       </a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
 
                 </div>
             </div>
         </nav>
     </header>
     <section class="our-blog container-fluid" style="margin-top: 34rem;">
-  		<div class="container" style="margin-top: 34rem;">
-          <h1> ADMIN PAGE</h1>
-          <a href="/doctors-list">Manage Doctors</a>
+        <div class="container" style="margin-top: 34rem;">
+            <h1> ADMIN PAGE</h1>
+            <a href="/doctors-list">Manage Doctors</a>
         </div>
     </section>
 
@@ -105,39 +109,39 @@ label {
                 </div>
             </div> -->
         </div>
-        
+
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
-    <script>
-        var botmanWidget = {
-            // frameEndpoint: "http://127.0.0.1:8000/views/botpage/chat1",
-            title:'Psychbot',
-            aboutText: 'Write Something',
-            introMessage: "Hello there! My name is PsychBot.",
-            mainColor:'#227a1d',
-            aboutText:'Powerd by ActiveHealth',
-            bubbleBackground:'#186613',
-            headerTextColor: '#fff',
-        };
-    </script>
-   
-    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+        <script>
+            var botmanWidget = {
+                // frameEndpoint: "http://127.0.0.1:8000/views/botpage/chat1",
+                title: 'Psychbot',
+                aboutText: 'Write Something',
+                introMessage: "Hello there! My name is PsychBot.",
+                mainColor: '#227a1d',
+                aboutText: 'Powerd by ActiveHealth',
+                bubbleBackground: '#186613',
+                headerTextColor: '#fff',
+            };
+        </script>
+
+        <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     </footer>
     <div class="copy">
-            <div class="container">
-                <a href="https://www.smarteyeapps.com/">2022 &copy; All Rights Reserved | Designed and Developed by ActiveHelp</a>
-                
-                <span>
+        <div class="container">
+            <a href="https://www.smarteyeapps.com/">2022 &copy; All Rights Reserved | Designed and Developed by ActiveHelp</a>
+
+            <span>
                 <a><i class="fab fa-github"></i></a>
                 <a><i class="fab fa-google-plus-g"></i></a>
                 <a><i class="fab fa-pinterest-p"></i></a>
                 <a><i class="fab fa-twitter"></i></a>
                 <a><i class="fab fa-facebook-f"></i></a>
-        </span>
-            </div>
-
+            </span>
         </div>
-    
-    </body>
+
+    </div>
+
+</body>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="assets/js/jquery-3.2.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
@@ -147,20 +151,20 @@ label {
 <script src="assets/js/script.js"></script>
 
 <script>
-
     /*
 	Smooth scroll functionality for anchor links (animates the scroll
 	rather than a sudden jump in the page)
 */
-$('.js-anchor-link').click(function(e){
-  e.preventDefault();
-  var target = $($(this).attr('href'));
-  if(target.length){
-    var scrollTo = target.offset().top;
-    $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
-  }
-});
-
+    $('.js-anchor-link').click(function(e) {
+        e.preventDefault();
+        var target = $($(this).attr('href'));
+        if (target.length) {
+            var scrollTo = target.offset().top;
+            $('body, html').animate({
+                scrollTop: scrollTo + 'px'
+            }, 800);
+        }
+    });
 </script>
 
 

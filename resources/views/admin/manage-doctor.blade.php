@@ -152,7 +152,7 @@
 
     function editProfile() {
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]');
-        fetch('/manage-profile', {
+        fetch('/manage-profile/admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -189,6 +189,7 @@
                 if (res.status == 200) {
                     window.location.reload();
                 }
+  
             })
             .catch(err => console.log(err));
     }

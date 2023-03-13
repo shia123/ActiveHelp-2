@@ -24,4 +24,8 @@ class Appointment extends Model
         'time'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'doctor');
+    }
 }
